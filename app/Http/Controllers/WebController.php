@@ -10,7 +10,7 @@ class WebController extends Controller
 {
     public function index () : object
     {
-        $records = Record::get();
+        $records = Record::get()->take(50);
         $records = $records->unique('record_id');
         foreach ($records as $record) {
             foreach (Record::where('record_id', $record->record_id)->get() as $item) {
